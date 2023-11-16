@@ -205,9 +205,9 @@ module Paperclip
       def find_credentials(creds)
         case creds
         when File
-          YAML::load(ERB.new(File.read(creds.path)).result)
+          YAML::load(ERB.new(File.read(creds.path)).result, aliases: true)
         when String, Pathname
-          YAML::load(ERB.new(File.read(creds)).result)
+          YAML::load(ERB.new(File.read(creds)).result, aliases: true)
         when Hash
           creds
         else
